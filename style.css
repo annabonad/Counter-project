@@ -9,7 +9,11 @@
 	--shadow: 0 28px 70px rgba(41, 35, 27, 0.12), 0 4px 12px rgba(41, 35, 27, 0.05);
 }
 
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	user-select: none;
+}
 
 body {
 	min-height: 100vh;

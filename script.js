@@ -44,6 +44,6 @@ decreaseButton.addEventListener('click', () => updateCounter(-1));
 increaseButton.addEventListener('click', () => updateCounter(1));
 
 document.addEventListener('keydown', (event) => {
-	if (event.key === '+' || event.key === '=') updateCounter(1);
-	if (event.key === '-' || event.key === '_') updateCounter(-1);
+	if (event.key === '+') updateCounter(1);
+	if (event.key === '-') updateCounter(-1);
 });
