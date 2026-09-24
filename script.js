@@ -15,7 +15,7 @@ header.append(title);
 const card = createElement('section', 'counter-card');
 const cardLabel = createElement('p', 'card-label', 'Current value');
 const value = createElement('output', 'counter-value', counterValue);
-value.setAttribute('aria-label', 'Valore del counter');
+value.setAttribute('aria-label', 'Counter value');
 
 const controls = createElement('div', 'controls');
 const decreaseButton = createElement('button', 'control-button', '−');
@@ -23,12 +23,12 @@ const increaseButton = createElement('button', 'control-button control-button-pr
 
 decreaseButton.type = 'button';
 increaseButton.type = 'button';
-decreaseButton.setAttribute('aria-label', 'Diminuisci il counter');
-increaseButton.setAttribute('aria-label', 'Aumenta il counter');
+decreaseButton.setAttribute('aria-label', 'Decrease counter');
+increaseButton.setAttribute('aria-label', 'Increase counter');
 controls.append(decreaseButton, increaseButton);
 card.append(cardLabel, value, controls);
 
-const footer = createElement('p', 'hint', 'Premi + o − per modificare il valore');
+const footer = createElement('p', 'hint', 'Press + or − to change the value');
 app.append(header, card, footer);
 
 const updateCounter = (change) => {
