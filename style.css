@@ -11,6 +11,7 @@
 
 html,
 body {
+	min-height: 100%;
 	touch-action: manipulation;
 }
 
@@ -24,6 +25,7 @@ body {
 	min-height: 100vh;
 	min-height: 100svh;
 	min-height: 100dvh;
+	height: 100dvh;
 	margin: 0;
 	display: grid;
 	place-items: center;
