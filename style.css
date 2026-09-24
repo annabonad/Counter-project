@@ -89,6 +89,7 @@ body::before {
 .control-button {
 	flex: 1;
 	height: 64px;
+	touch-action: manipulation;
 	border: 1px solid var(--line);
 	border-radius: 2px;
 	color: var(--ink);
