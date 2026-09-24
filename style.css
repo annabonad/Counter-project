@@ -38,6 +38,17 @@ body {
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Times New Roman', serif;
 }
 
+@supports (-webkit-touch-callout: none) {
+	html {
+		height: -webkit-fill-available;
+	}
+
+	body {
+		height: -webkit-fill-available;
+		min-height: -webkit-fill-available;
+	}
+}
+
 body::before {
 	content: '';
 	position: fixed;
