@@ -1,5 +1,6 @@
 const app = document.querySelector('#app');
-let counterValue = 0;
+const savedCounterValue = localStorage.getItem('counterValue');
+let counterValue = savedCounterValue === null ? 0 : parseInt(savedCounterValue, 10);
 
 const createElement = (tag, className, text = '') => {
 	const element = document.createElement(tag);
@@ -30,9 +31,11 @@ card.append(cardLabel, value, controls);
 
 const footer = createElement('p', 'hint', 'Press + or − to change the value');
 app.append(header, card, footer);
+card.classList.toggle('is-negative', counterValue < 0);
 
 const updateCounter = (change) => {
 	counterValue += change;
+	localStorage.setItem('counterValue', counterValue);
 	value.textContent = counterValue;
 	value.classList.remove('value-pop');
 	void value.offsetWidth;
