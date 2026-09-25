@@ -17,6 +17,7 @@ const card = createElement('section', 'counter-card');
 const cardLabel = createElement('p', 'card-label', 'Current value');
 const value = createElement('output', 'counter-value', counterValue);
 value.setAttribute('aria-label', 'Counter value');
+value.setAttribute('aria-live', 'polite');
 
 const controls = createElement('div', 'controls');
 const decreaseButton = createElement('button', 'control-button', '−');
