@@ -1,82 +1,88 @@
 # Counter Project
 
-Una semplice applicazione web per incrementare e decrementare un contatore. Il progetto è sviluppato esclusivamente con HTML, CSS e JavaScript puro, senza framework, librerie esterne o strumenti di build.
+A simple web application for increasing and decreasing a counter. The project is built with plain HTML, CSS, and JavaScript, without frameworks, external libraries, or build tools.
 
-## Indice
+LIVE SITE:  https://annabonad.github.io/Counter-project/
 
-- [Panoramica](#panoramica)
-- [Funzionalità](#funzionalità)
-- [Tecnologie](#tecnologie)
-- [Struttura del progetto](#struttura-del-progetto)
-- [Apertura diretta] (#apertura-diretta)
-- [Funzionamento](#funzionamento)
-- [Accessibilità e responsive design](#accessibilità-e-responsive-design)
+## Contents
 
-## Panoramica
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Project structure](#project-structure)
+- [How it works](#how-it-works)
+- [Accessibility and responsive design](#accessibility-and-responsive-design)
 
-Al caricamento della pagina, l'interfaccia viene generata dinamicamente tramite JavaScript e mostra un valore iniziale pari a `0`.
+## Overview
 
-L'utente può modificare il valore usando i pulsanti `+` e `−` oppure le scorciatoie da tastiera. L'interfaccia adotta un design minimal e contemporaneo, con microinterazioni pensate per rendere più chiaro il feedback a ogni modifica.
+When the page loads, the interface is generated dynamically with JavaScript. The counter starts at `0` if no previous value has been saved; otherwise, it restores the value from the browser's `localStorage`.
 
-## Funzionalità
+Users can change the value with the `+` and `−` buttons or with keyboard shortcuts. The interface uses a minimal, contemporary design with small interactions that provide clear feedback after every change.
 
-- Visualizzazione del counter con valore iniziale `0`.
-- Incremento del valore tramite il pulsante `+`.
-- Decremento del valore tramite il pulsante `−`.
-- Supporto ai tasti `+` per incrementare.
-- Supporto ai tasti `-` per decrementare.
-- Possibilità di raggiungere valori negativi.
-- Animazione del valore dopo ogni aggiornamento.
-- Cambio colore del valore quando diventa negativo.
-- Stati hover, active e focus-visible sui pulsanti.
-- Animazione di ingresso dell'interfaccia.
-- Riduzione automatica delle animazioni quando l'utente ha attivato la preferenza di sistema per ridurre il movimento.
-- Layout responsive per dispositivi desktop e mobile.
+## Features
 
-## Tecnologie
+- Displays the current counter value.
+- Increases the value with the `+` button.
+- Decreases the value with the `−` button.
+- Supports the `+` key for increasing the value.
+- Supports the `-` key for decreasing the value.
+- Allows negative values.
+- Saves the current value to `localStorage` after every change.
+- Restores the saved value when the page is reopened.
+- Animates the value after every update.
+- Changes the value color when it becomes negative.
+- Provides hover, active, and focus-visible states for the buttons.
+- Includes an interface entrance animation.
+- Automatically reduces animations when the user prefers reduced motion.
+- Provides a responsive layout for desktop and mobile devices.
 
-- **HTML5** per la struttura della pagina.
-- **CSS3** per layout, responsive design, colori, animazioni e microinterazioni.
-- **JavaScript ES6+** per la generazione dinamica dell'interfaccia e la gestione degli eventi.
-- Nessuna dipendenza esterna.
+## Technologies
 
+- **HTML5** for the page structure.
+- **CSS3** for layout, responsive design, colors, animations, and interactions.
+- **JavaScript ES6+** for dynamic interface generation and event handling.
+- No external dependencies.
 
-## Apertura diretta
+## Project structure
 
-
-## Struttura del progetto
-
+```text
 Counter-project/
-├── index.html   # Pagina HTML e punto di ingresso dell'applicazione
-├── script.js    # Generazione del DOM e logica del counter
-├── style.css    # Stili, layout responsive e microinterazioni
-└── README.md    # Documentazione del progetto
+├── index.html   # HTML page and application entry point
+├── script.js    # DOM generation and counter logic
+├── style.css    # Styles, responsive layout, and interactions
+└── README.md    # Project documentation
+```
 
+## How it works
 
-## Funzionamento
+### Interface generation
 
-### Generazione dell'interfaccia
+The `index.html` file contains only the main `#app` container. Visible elements, including the title, value, buttons, and hint, are created in `script.js` with `document.createElement()` and added to the DOM with `append()`.
 
-Il file `index.html` contiene soltanto il contenitore principale `#app`. Gli elementi visibili, tra cui titolo, valore, pulsanti e messaggio informativo, vengono creati in `script.js` mediante `document.createElement()` e aggiunti al DOM con `append()`.
+### Loading and saving the value
 
-### Aggiornamento del valore
+At startup, the script reads the `counterValue` item from `localStorage`. Since `localStorage` stores values as strings, the saved value is converted to an integer with `parseInt(savedCounterValue, 10)`. If no value exists, `getItem()` returns `null` and the counter starts at `0`.
 
-La variabile `counterValue` conserva il valore corrente. La funzione `updateCounter(change)`:
+### Updating the value
 
-1. aggiorna il valore numerico;
-2. modifica il testo dell'elemento `output`;
-3. riavvia l'animazione del valore;
-4. applica o rimuove lo stato visivo per i valori negativi.
+The `counterValue` variable stores the current value. The `updateCounter(change)` function:
 
-I pulsanti utilizzano `addEventListener('click', ...)`, mentre la tastiera viene gestita tramite un listener globale sull'evento `keydown`.
+1. changes the numeric value;
+2. saves it to `localStorage`;
+3. updates the `output` element's text;
+4. restarts the value animation;
+5. applies or removes the visual state for negative values.
 
-## Accessibilità e responsive design
+The buttons use `addEventListener('click', ...)`, while keyboard input is handled with a global `keydown` listener.
 
-- I pulsanti hanno etichette accessibili tramite `aria-label`.
-- Il valore è esposto tramite un elemento semantico `output`.
-- Il contenitore principale usa `aria-live="polite"` per comunicare gli aggiornamenti ai lettori di schermo senza interrompere la navigazione.
-- I pulsanti mantengono un indicatore visibile quando ricevono il focus da tastiera.
-- Il layout si adatta alle dimensioni dello schermo tramite media query CSS.
-- La regola `prefers-reduced-motion` limita le animazioni per gli utenti che lo richiedono nelle impostazioni del sistema operativo.
+## Accessibility and responsive design
+
+- The buttons have accessible labels through `aria-label`.
+- The value is exposed through the semantic `output` element.
+- The `output` element uses `aria-live="polite"` so screen readers announce value changes without interrupting the user.
+- The main container is not a live region, preventing duplicate or overly broad announcements.
+- The buttons have a visible focus indicator for keyboard users.
+- The layout adapts to screen size through CSS media queries.
+- The `prefers-reduced-motion` rule limits animations for users who request reduced motion in their operating system settings.
 
 
